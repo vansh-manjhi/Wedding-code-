@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="locked">
+
+<canvas id="fx"></canvas>
+<audio id="bgm" loop preload="auto"></audio>
+<button id="musicBtn" title="Music on/off">🔇</button>
+
+<!-- ============ ENTRY GATE ============ -->
+<div id="gate">
+  <div class="door l"><div class="img"></div></div>
+  <div class="door r"><div class="img"></div></div>
+  <div class="gate-ui">
+    <div class="welcome">You are invited</div>
+    <div class="who" id="gateWho"></div>
+    <button class="btn pulse" id="openBtn">TAP TO OPEN</button>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="bg"></div><div class="sun"></div><div class="shade"></div>
+  <div class="hero-text">
+    <div class="tw" id="heroTag"></div><br>
+    <h1><span id="heroBride"></span><span class="amp">&amp;</span><span id="heroGroom"></span></h1>
+    <div class="date" id="heroDate"></div>
+  </div>
+  <div class="scroll-hint">SCROLL<span></span></div>
+</section>
+
+<!-- ============ ENVELOPE ============ -->
+<section class="pattern">
+  <div class="sub reveal">With the blessings of our elders</div>
+  <h2 class="title reveal d1">The Invitation</h2>
+  <div class="divider reveal d1"></div>
+  <div class="env-wrap reveal d2">
+    <div class="envelope" id="envelope">
+      <div class="back"></div>
+      <div class="card">
+        <div class="ganesh">ॐ</div>
+        <small id="invLine"></small>
+        <div class="nm" id="invNames"></div>
+        <div class="dt" id="invDate"></div>
+        <small id="invVenue"></small>
+      </div>
+      <div class="front"></div>
+      <div class="flap"></div>
+      <div class="seal" id="sealTxt"></div>
+    </div>
+    <div class="hint" id="envHint">TAP THE ENVELOPE TO OPEN</div>
+  </div>
+</section>
+
+<!-- ============ COUNTDOWN + SCRATCH ============ -->
+<section class="pattern">
+  <div class="sub reveal">Counting every moment</div>
+  <h2 class="title reveal d1">Countdown to Forever</h2>
+  <div class="divider reveal d1"></div>
+  <div class="count reveal d2">
+    <div class="arch"><b id="cd-d" class="tick">00</b><span>DAYS</span></div>
+    <div class="arch"><b id="cd-h" class="tick">00</b><span>HOURS</span></div>
+    <div class="arch"><b id="cd-m" class="tick">00</b><span>MINUTES</span></div>
+    <div class="arch"><b id="cd-s" class="tick">00</b><span>SECONDS</span></div>
+  </div>
+  <div class="scratch-box reveal d3">
+    <div class="scratch-under">
+      <div class="k">SAVE THE DATE</div>
+      <div class="big" id="scDate"></div>
+      <p id="scText"></p>
+    </div>
+    <canvas id="scratch"></canvas>
+  </div>
+  <p class="drag-note">DRAG YOUR MOUSE OR FINGER TO SCRATCH</p>
+</section>
+
+<!-- ============ COUPLE ============ -->
+<section class="pattern" id="couple">
+  <div class="sub reveal">Two souls, one journey</div>
+  <h2 class="title reveal d1">The Couple</h2>
+  <div class="divider reveal d1"></div>
+  <div class="couple">
+    <div class="jharokha reveal d1"><div class="frame tilt"><img id="brideImg" alt="Bride"></div><h3 id="brideName"></h3><p id="brideInfo"></p></div>
+    <div class="heart reveal d2">♥</div>
+    <div class="jharokha reveal d3"><div class="frame tilt"><img id="groomImg" alt="Groom"></div><h3 id="groomName"></h3><p id="groomInfo"></p></div>
+  </div>
+  <div class="families" id="families"></div>
+</section>
+
+<!-- ============ EVENTS ============ -->
+<section id="events">
+  <div class="rail"></div>
+  <div class="sub reveal" style="margin-top:30px">Join us in the celebrations</div>
+  <h2 class="title reveal d1">Wedding Festivities</h2>
+  <div class="divider reveal d1"></div>
+  <div class="banners" id="banners"></div>
+  <p class="drag-note">GRAB A BANNER AND SWING IT</p>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <div class="sub reveal">Moments to cherish</div>
+  <h2 class="title reveal d1">Gallery</h2>
+  <div class="divider reveal d1"></div>
+  <div class="track-wrap reveal d2" id="trackWrap"><div class="track" id="track"></div></div>
+  <p class="drag-note" style="color:var(--gold-l)">DRAG LEFT OR RIGHT · CLICK TO VIEW</p>
+</section>
+<div id="lightbox"><img alt=""></div>
+
+<!-- ============ VENUE ============ -->
+<section class="pattern">
+  <div class="sub reveal">Where hearts meet</div>
+  <h2 class="title reveal d1">Venue</h2>
+  <div class="divider reveal d1"></div>
+  <div class="venue">
+    <div class="vcard reveal d1">
+      <div class="icon">🏠</div>
+      <h3 id="vName"></h3>
+      <p id="vAddr"></p>
+      <p style="margin-top:12px;font-style:italic" id="vNote"></p>
+      <a class="btn" id="vBtn" target="_blank" rel="noopener">GET DIRECTIONS</a>
+    </div>
+    <div class="map reveal d2"><iframe id="vMap" loading="lazy" title="map"></iframe></div>
+  </div>
+</section>
+
+<!-- ============ RSVP + WISHES ============ -->
+<section class="pattern">
+  <div class="sub reveal">Your presence is our blessing</div>
+  <h2 class="title reveal d1">RSVP &amp; Wishes</h2>
+  <div class="divider reveal d1"></div>
+  <div class="two">
+    <div class="panel reveal d1" id="rsvpPanel">
+      <h3>WILL YOU JOIN US?</h3>
+      <form id="rsvpForm">
+        <input id="rName" placeholder="Your name" required>
+        <input id="rPhone" placeholder="Phone number">
+        <select id="rCome"><option>Yes, I will be there</option><option>Sorry, I can't make it</option></select>
+        <select id="rCount"><option>1 guest</option><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5+ guests</option></select>
+        <button class="btn" type="submit">SEND RSVP</button>
+      </form>
+      <div class="thanks" id="thanks"><div class="big">Thank you!</div><p>We can't wait to celebrate with you.</p></div>
+    </div>
+    <div class="panel reveal d2">
+      <h3>WISHES WALL</h3>
+      <form id="wishForm">
+        <input id="wName" placeholder="Your name" required>
+        <textarea id="wMsg" rows="3" placeholder="Write your blessings for the couple" required></textarea>
+        <button class="btn" type="submit">POST WISH</button>
+      </form>
+      <div id="wishList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="sub">We await your gracious presence</div>
+  <div class="nm" id="fNames"></div>
+  
+  <!-- Yaha apni video add karein -->
+  <div class="footer-media">
+    <video src="video.mp4" autoplay loop muted playsinline class="footer-video"></video>
+  </div>
+
+  <p style="margin-top:10px;font-style:italic" id="fFrom"></p>
+  <div class="dunes"></div>
+  <div class="camel">🐪</div><div class="camel" style="animation-delay:-6s;font-size:38px">🐪</div>
+</footer>
+
+<!-- Load Configuration and Logic Scripts -->
+<script src="config.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
